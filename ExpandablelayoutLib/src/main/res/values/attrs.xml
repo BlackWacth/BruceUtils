@@ -2,7 +2,9 @@
 <resources>
 
     <declare-styleable name="ExpandableLayout">
-
+        <attr name="expandDuration" format="integer|reference"/>
+        <attr name="expandWithParentScroll" format="boolean"/>
+        <attr name="expandScrollTogether" format="boolean"/>
     </declare-styleable>
 
 </resources>
