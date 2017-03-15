@@ -68,7 +68,7 @@ public class ExpandableLayout extends LinearLayout{
             try {
                 typedArray = context.obtainStyledAttributes(attrs, R.styleable.ExpandableLayout);
                 mExpandDuration = typedArray.getInt(R.styleable.ExpandableLayout_expandDuration, DEFAULT_DURATION);
-                mExpandWithParentScroll = typedArray.getBoolean(R.styleable.ExpandableLayout_expandWithParentScroll, false);
+                mExpandWithParentScroll = typedArray.getBoolean(R.styleable.ExpandableLayout_expandWithParentScroll, true);
                 mExpandScrollTogether = typedArray.getBoolean(R.styleable.ExpandableLayout_expandScrollTogether, true);
             } finally {
                 if(typedArray != null) {
@@ -215,11 +215,11 @@ public class ExpandableLayout extends LinearLayout{
 
     @Override
     public boolean performClick() {
-        toggle();
+//        toggle();
         return super.performClick();
     }
 
-    private void toggle() {
+    public void toggle() {
         if(mExpandState == ExpandState.EXPANDED) {
             close();
         } else if(mExpandState == ExpandState.CLOSED) {

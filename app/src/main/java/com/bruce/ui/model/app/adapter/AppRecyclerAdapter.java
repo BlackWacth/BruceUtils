@@ -9,10 +9,14 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bruce.R;
 import com.bruce.entity.AppInfo;
+import com.bruce.expandablelayoutlib.ExpandableLayout;
+import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
@@ -38,11 +42,19 @@ public class AppRecyclerAdapter extends RecyclerView.Adapter<AppRecyclerAdapter.
     }
 
     @Override
-    public void onBindViewHolder(AppInfoHolder holder, int position) {
+    public void onBindViewHolder(final AppInfoHolder holder, final int position) {
         final AppInfo appInfo = mAppInfos.get(position);
         holder.appName.setText(appInfo.getAppName());
         holder.pckName.setText(appInfo.getPckName());
         holder.icon.setImageDrawable(appInfo.getIcon());
+
+        holder.contentContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Logger.i("click -- > %d", position);
+                holder.container.toggle();
+            }
+        });
     }
 
     @Override
@@ -63,14 +75,20 @@ public class AppRecyclerAdapter extends RecyclerView.Adapter<AppRecyclerAdapter.
 
     class AppInfoHolder extends RecyclerView.ViewHolder{
 
-        CardView container;
+        ExpandableLayout container;
+        RelativeLayout contentContainer;
+        LinearLayout controlContainer;
+        CardView cardView;
         ImageView icon;
         TextView appName;
         TextView pckName;
 
-        public AppInfoHolder(View itemView) {
+        AppInfoHolder(View itemView) {
             super(itemView);
-            container = (CardView) itemView.findViewById(R.id.cv_item_app_card_view);
+            container = (ExpandableLayout) itemView.findViewById(R.id.el_item_app_container);
+            contentContainer = (RelativeLayout) itemView.findViewById(R.id.rl_item_app_content_container);
+            controlContainer = (LinearLayout) itemView.findViewById(R.id.ll_item_app_control_container);
+            cardView = (CardView) itemView.findViewById(R.id.cv_item_app_card_view);
             icon = (ImageView) itemView.findViewById(R.id.iv_item_app_icon);
             appName = (TextView) itemView.findViewById(R.id.tv_item_app_name);
             pckName = (TextView) itemView.findViewById(R.id.tv_item_app_package_name);

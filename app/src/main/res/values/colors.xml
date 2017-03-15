@@ -8,4 +8,9 @@
     <color name="teal_500">#009688</color>
     <color name="teal_700">#00796b</color>
     <color name="teal_A200">#64ffda</color>
+
+    <color name="grey_300">#e0e0e0</color>
+    <color name="cyan_200">#80deea</color>
+
+    <color name="dark">#FF222222</color>
 </resources>
