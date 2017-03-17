@@ -13,16 +13,18 @@ public class AppInfo {
     private SpannableString appName;
     private SpannableString pckName;
     private String version;
+    private String apkPath;
     private int type;
 
     public AppInfo() {
     }
 
-    public AppInfo(Drawable icon, SpannableString appName, SpannableString pckName, String version, int type) {
+    public AppInfo(Drawable icon, SpannableString appName, SpannableString pckName, String version, String apkPath, int type) {
         this.icon = icon;
         this.appName = appName;
         this.pckName = pckName;
         this.version = version;
+        this.apkPath = apkPath;
         this.type = type;
     }
 
@@ -66,13 +68,22 @@ public class AppInfo {
         this.icon = icon;
     }
 
+    public String getApkPath() {
+        return apkPath;
+    }
+
+    public void setApkPath(String apkPath) {
+        this.apkPath = apkPath;
+    }
+
     @Override
     public String toString() {
-        return "App{" +
+        return "AppInfo{" +
                 "icon=" + icon +
-                ", appName='" + appName + '\'' +
-                ", pckName='" + pckName + '\'' +
+                ", appName=" + appName +
+                ", pckName=" + pckName +
                 ", version='" + version + '\'' +
+                ", apkPath='" + apkPath + '\'' +
                 ", type=" + type +
                 '}';
     }

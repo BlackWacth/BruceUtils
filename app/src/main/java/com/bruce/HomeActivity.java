@@ -56,7 +56,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onStart() {
         super.onStart();
-        changeContentFragment(AppsHomeFragment.newInstance(), "AppList");
+//        changeContentFragment(AppsHomeFragment.newInstance(), "AppList");
     }
 
     @Override

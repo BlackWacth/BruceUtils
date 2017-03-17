@@ -53,6 +53,7 @@ public class AppListLoader extends AsyncTaskLoader<List<AppInfo>> {
             appInfo.setPckName(new SpannableString(packageInfo.packageName));
             appInfo.setVersion(packageInfo.versionName);
             appInfo.setIcon(packageInfo.applicationInfo.loadIcon(mPackageManager));
+            appInfo.setApkPath(packageInfo.applicationInfo.sourceDir);
             if((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
                 appInfo.setType(C.USER_APP);
             } else {
